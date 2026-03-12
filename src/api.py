@@ -1,5 +1,6 @@
 import joblib
 import pandas as pd
+from sklearn.base import BaseEstimator, TransformerMixin
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -18,7 +19,7 @@ class StudentData(BaseModel):
 
 app = FastAPI()
 
-model = joblib.load("models_and_pipelines/final_model.pkl")
+model = joblib.load("models_and_pipelines/final_pipeline.pkl")
 
 @app.post("/score")
 def score(data: StudentData):
@@ -38,4 +39,4 @@ def score(data: StudentData):
 
     prediction = model.predict(X)[0]
 
-    return {"score": prediction}
+    return {"score": float(prediction)}
