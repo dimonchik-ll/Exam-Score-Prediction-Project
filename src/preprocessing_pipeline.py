@@ -9,18 +9,7 @@ from data import X_train
 
 cat_features_for_onehot = ["gender", "course", "study_method", "internet_access"]
 cat_features_for_ordinal = ["sleep_quality", "facility_rating", "exam_difficulty"]
-num_fetures = ["age", "study_hours", "class_attendance", "sleep_hours", "study_sleep_ratio"]
-
-
-class AddStudySleepRatio(BaseEstimator, TransformerMixin):
-    def fit(self, X, y=None):
-        return self
-    
-    def transform(self, X):
-        X = X.copy()
-        X["study_sleep_ratio"] = X["study_hours"] / X["sleep_hours"]
-        return X
-
+num_fetures = ["age", "study_hours", "class_attendance", "sleep_hours"]
 
 def build_preprocessing_pipeline():
     scaler = StandardScaler()
@@ -37,8 +26,6 @@ def build_preprocessing_pipeline():
 
     imputer_for_num = SimpleImputer(strategy="mean")
     imputer_for_cat = SimpleImputer(strategy="most_frequent")
-
-    ratio_adder = AddStudySleepRatio()
 
     numeric_pipeline = Pipeline([
         ('imputer', imputer_for_num),
@@ -61,12 +48,7 @@ def build_preprocessing_pipeline():
         ('num', numeric_pipeline, num_fetures)
     ])
 
-    preprocessing_pipeline = Pipeline([
-        ('add_ratio', ratio_adder),
-        ('transform', transformer)
-    ])
-
-    return preprocessing_pipeline
+    return transformer
 
 def fit_preprocessor(preprocessor):
     preprocessor.fit(X_train)
