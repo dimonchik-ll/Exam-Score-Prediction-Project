@@ -13,7 +13,7 @@ install:
 models_and_pipelines/final_pipeline.pkl: src/model.py src/preprocessing_pipeline.py src/train.py
 	$(PYTHON) src/train.py
 
-.PHONY: backend frontend run
+.PHONY: backend frontend
 
 backend:
 	$(PYTHON) -m uvicorn src.api:app --reload

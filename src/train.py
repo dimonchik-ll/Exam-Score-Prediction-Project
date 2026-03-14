@@ -1,6 +1,6 @@
 from model import tune_models, fit_and_select_best, test_score, save_object
 
-cv_scores, best_params = tune_models(n_trials=1)
+cv_scores, best_params = tune_models(n_trials=100)
 
 best_model_name, val_score, best_pipeline = fit_and_select_best(best_params)
 

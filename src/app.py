@@ -1,5 +1,5 @@
 import streamlit as st
-from data import data
+from src.data import data
 import requests
 
 st.title("Exam score prediction")

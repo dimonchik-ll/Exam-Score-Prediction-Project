@@ -3,7 +3,7 @@ numpy==2.4.2
 matplotlib==3.10.8
 seaborn==0.13.2
 scikit-learn==1.8.0
-catboost==1.2.1
+catboost==1.2.10
 xgboost==3.2.0
 optuna==4.7.0
 joblib==1.5.3
