@@ -54,3 +54,14 @@ make frontend
 ```
 
 The web app allows users to input student characteristics and receive a predicted exam score.
+
+### Training the Model
+To retrain the model run:
+```bash
+make models_and_pipelines/final_pipeline.pkl
+```
+
+## Future Improvements
+
+- Deploy the application to a cloud service
+- Add automated tests
